@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 
 const DarkModeBtn = () => {
