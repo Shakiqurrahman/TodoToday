@@ -12,6 +12,6 @@ body {
 }
 
 .dark {
-    background-color: black;
+    background: black;
     color: white;
 }

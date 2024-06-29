@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { FiMoon, FiSun } from 'react-icons/fi';
 
 const DarkModeBtn = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     if (darkMode) {
@@ -14,9 +15,9 @@ const DarkModeBtn = () => {
   return (
     <button
       onClick={() => setDarkMode(!darkMode)}
-      className="p-2 bg-gray-800 text-white rounded-md"
+      className="py-2 px-3 bg-black dark:bg-white text-white dark:text-black rounded-md"
     >
-      {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+      {darkMode ? <FiMoon size={24} /> : <FiSun size={24} />}
     </button>
   );
 };
