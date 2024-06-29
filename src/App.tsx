@@ -1,4 +1,4 @@
-import DarkModeBtn from './DarkModeBtn.jsx'
+import DarkModeBtn from './DarkModeBtn.tsx'
 export default function App() {
     return (
         <main className="mt-20 max-w-[800px] mx-auto">
