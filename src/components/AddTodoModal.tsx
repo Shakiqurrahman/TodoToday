@@ -62,7 +62,7 @@ export function AddTodoModal() {
                         <Input
                             className="dark:text-white"
                             color="cyan"
-                            label="Input your note"
+                            label="Add your note"
                             // value={note}
                             onChange={(e) => setNote(e.target.value)}
                         />
