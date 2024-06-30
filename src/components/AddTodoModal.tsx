@@ -1,3 +1,4 @@
+import React,{ useState } from "react";
 import {
     Button,
     Dialog,
@@ -5,34 +6,41 @@ import {
     DialogFooter,
     DialogHeader,
     Input,
-    Textarea,
     Typography,
 } from "@material-tailwind/react";
-import { useState } from "react";
 
 export function AddTodoModal() {
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(!open);
 
+
     return (
         <>
-            <button onClick={handleOpen} className="w-full bg-primary px-4 py-2.5 rounded-lg text-white">
+            <button
+                onClick={handleOpen}
+                className="w-full bg-primary px-4 py-2.5 rounded-lg text-white"
+            >
                 Add Todo
             </button>
-            <Dialog className="p-4 dark:bg-black dark:text-white dark:border border-white" open={open} size="xs" handler={handleOpen}>
+            <Dialog
+                className="p-4 dark:bg-black dark:text-white dark:border border-white"
+                open={open}
+                size="xs"
+                handler={handleOpen}
+            >
                 <div className="mb-6 flex  justify-between">
                     <DialogHeader className="mx-auto flex flex-col items-start">
                         {" "}
                         <Typography className="dark:text-white" variant="h4">
-                            New Note 
+                            New Note
                         </Typography>
                     </DialogHeader>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="currentColor"
-                        className="h-6 w-6"
+                        className="h-6 w-6 cursor-pointer"
                         onClick={handleOpen}
                     >
                         <path
@@ -44,11 +52,19 @@ export function AddTodoModal() {
                 </div>
                 <DialogBody>
                     <div className="grid mb-4">
-                        <Input className="dark:text-white" color="cyan" label="Input your note" />
+                        <Input
+                            className="dark:text-white"
+                            color="cyan"
+                            label="Input your note"
+                        />
                     </div>
                 </DialogBody>
                 <DialogFooter className="space-x-2 flex justify-between">
-                    <Button variant="outlined" color="cyan" onClick={handleOpen}>
+                    <Button
+                        variant="outlined"
+                        color="cyan"
+                        onClick={handleOpen}
+                    >
                         cancel
                     </Button>
                     <Button
@@ -56,7 +72,7 @@ export function AddTodoModal() {
                         color="cyan"
                         onClick={handleOpen}
                     >
-                        Apply
+                        Add
                     </Button>
                 </DialogFooter>
             </Dialog>
