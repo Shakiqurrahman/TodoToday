@@ -1,3 +1,4 @@
+import { AddTodoModal } from './components/AddTodoModal.tsx';
 import DarkModeBtn from './components/DarkModeBtn.tsx'
 export default function App() {
     return (
@@ -6,9 +7,7 @@ export default function App() {
                 Todo<span className="text-black dark:text-white">Today!</span>
             </h1>
             <div className='flex justify-between items-center gap-6 mt-8'>
-                <button className="w-full bg-primary px-4 py-2.5 rounded-lg text-white">
-                    Add Todo
-                </button>
+                <AddTodoModal />
                 <DarkModeBtn />
             </div>
         </main>
