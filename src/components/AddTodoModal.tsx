@@ -11,8 +11,15 @@ import {
 
 export function AddTodoModal() {
     const [open, setOpen] = useState(false);
+    const [note, setNote] = useState("");
+
 
     const handleOpen = () => setOpen(!open);
+
+    const getNoteValue = () => {
+        console.log(note); 
+        handleOpen(); 
+      };
 
 
     return (
@@ -56,6 +63,8 @@ export function AddTodoModal() {
                             className="dark:text-white"
                             color="cyan"
                             label="Input your note"
+                            // value={note}
+                            onChange={(e) => setNote(e.target.value)}
                         />
                     </div>
                 </DialogBody>
@@ -70,7 +79,7 @@ export function AddTodoModal() {
                     <Button
                         variant="gradient"
                         color="cyan"
-                        onClick={handleOpen}
+                        onClick={getNoteValue}
                     >
                         Add
                     </Button>
