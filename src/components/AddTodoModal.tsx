@@ -20,11 +20,11 @@ export function AddTodoModal() {
             <button onClick={handleOpen} className="w-full bg-primary px-4 py-2.5 rounded-lg text-white">
                 Add Todo
             </button>
-            <Dialog className="p-4" open={open} size="xs" handler={handleOpen}>
+            <Dialog className="p-4 dark:bg-black dark:text-white dark:border border-white" open={open} size="xs" handler={handleOpen}>
                 <div className="mb-6 flex  justify-between">
                     <DialogHeader className="mx-auto flex flex-col items-start">
                         {" "}
-                        <Typography className="" variant="h4">
+                        <Typography className="dark:text-white" variant="h4">
                             New Note 
                         </Typography>
                     </DialogHeader>
@@ -44,7 +44,7 @@ export function AddTodoModal() {
                 </div>
                 <DialogBody>
                     <div className="grid mb-4">
-                        <Input color="cyan" label="Input your note" />
+                        <Input className="dark:text-white" color="cyan" label="Input your note" />
                     </div>
                 </DialogBody>
                 <DialogFooter className="space-x-2 flex justify-between">
