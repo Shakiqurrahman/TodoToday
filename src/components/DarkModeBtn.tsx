@@ -19,7 +19,7 @@ const DarkModeBtn = () => {
     return (
         <button
             onClick={() => setDarkMode(!darkMode)}
-            className="py-2 px-3 bg-black dark:bg-white text-white dark:text-black rounded-md transition-colors duration-300"
+            className="py-2 px-3 bg-black dark:bg-white text-white dark:text-black rounded-md "
         >
             {darkMode ? <FiSun size={24} /> : <FiMoon size={24} />}
         </button>
