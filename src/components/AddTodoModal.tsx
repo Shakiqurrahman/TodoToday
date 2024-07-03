@@ -1,26 +1,33 @@
-import React,{ useState } from "react";
-import {
-    Button,
-    Dialog,
-    DialogBody,
-    DialogFooter,
-    DialogHeader,
-    Input,
-    Typography,
-} from "@material-tailwind/react";
+import { useEffect, useRef, useState } from "react";
 
 export function AddTodoModal() {
     const [open, setOpen] = useState(false);
-    const [note, setNote] = useState("");
-
+    const [todo, setTodo] = useState("");
+    const modalRef = useRef(null);
 
     const handleOpen = () => setOpen(!open);
 
-    const getNoteValue = () => {
-        console.log(note); 
-        handleOpen(); 
-      };
+    const handleClickOutside = (event: MouseEvent) => {
+        if (
+            modalRef.current &&
+            !(modalRef.current as any).contains(event.target)
+        ) {
+            setOpen(false);
+        }
+    };
 
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const handleAddTodo = () => {
+        console.log("Todo:", todo);
+        setTodo("");
+        setOpen(false);
+    };
 
     return (
         <>
@@ -30,61 +37,49 @@ export function AddTodoModal() {
             >
                 Add Todo
             </button>
-            <Dialog
-                className="p-4 dark:bg-black dark:text-white dark:border border-white"
-                open={open}
-                size="xs"
-                handler={handleOpen}
-            >
-                <div className="mb-6 flex  justify-between">
-                    <DialogHeader className="mx-auto flex flex-col items-start">
-                        {" "}
-                        <Typography className="dark:text-white" variant="h4">
+            {open && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+                    <div
+                        ref={modalRef}
+                        className="relative bg-white dark:border border-white dark:bg-black rounded-xl p-10 w-[450px]  "
+                    >
+                        <button
+                            onClick={handleOpen}
+                            className="text-gray-700 text-4xl hover:text-black dark:text-white absolute top-3 right-4"
+                        >
+                            &times;
+                        </button>
+
+                        <h2 className="text-lg text-center font-semibold dark:text-white ">
                             New Note
-                        </Typography>
-                    </DialogHeader>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="h-6 w-6 cursor-pointer"
-                        onClick={handleOpen}
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
-                            clipRule="evenodd"
-                        />
-                    </svg>
-                </div>
-                <DialogBody>
-                    <div className="grid mb-4">
-                        <Input
-                            className="dark:text-white"
-                            color="cyan"
-                            label="Add your note"
-                            // value={note}
-                            onChange={(e) => setNote(e.target.value)}
-                        />
+                        </h2>
+
+                        <div className="my-10">
+                            <input
+                                type="text"
+                                placeholder="Enter your note"
+                                value={todo}
+                                onChange={(e) => setTodo(e.target.value)}
+                                className="w-full px-4 py-2.5 rounded-lg focus:outline-none dark:bg-black dark:text-white border border-black dark:border-white"
+                            />
+                        </div>
+                        <div className="mt-6 flex justify-between space-x-2">
+                            <button
+                                onClick={handleOpen}
+                                className="px-4 py-2 bg-black hover:bg-black/85 border text-white rounded-lg"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleAddTodo}
+                                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"
+                            >
+                                Add Todo
+                            </button>
+                        </div>
                     </div>
-                </DialogBody>
-                <DialogFooter className="space-x-2 flex justify-between">
-                    <Button
-                        variant="outlined"
-                        color="cyan"
-                        onClick={handleOpen}
-                    >
-                        cancel
-                    </Button>
-                    <Button
-                        variant="gradient"
-                        color="cyan"
-                        onClick={getNoteValue}
-                    >
-                        Add
-                    </Button>
-                </DialogFooter>
-            </Dialog>
+                </div>
+            )}
         </>
     );
 }
