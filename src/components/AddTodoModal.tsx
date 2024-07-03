@@ -33,7 +33,7 @@ export function AddTodoModal() {
         <>
             <button
                 onClick={handleOpen}
-                className="w-full bg-primary px-4 py-2.5 rounded-lg text-white"
+                className="w-full bg-primary hover:bg-primary/90 duration-300 px-4 py-2.5 rounded-lg text-white"
             >
                 Add Todo
             </button>
@@ -41,7 +41,7 @@ export function AddTodoModal() {
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
                     <div
                         ref={modalRef}
-                        className="relative bg-white dark:border border-white dark:bg-black rounded-xl p-10 w-[450px]  "
+                        className="relative bg-white dark:border border-white dark:bg-black rounded-xl sm:p-10 px-4 py-6 sm:w-[450px] w-full mx-8"
                     >
                         <button
                             onClick={handleOpen}
@@ -72,7 +72,7 @@ export function AddTodoModal() {
                             </button>
                             <button
                                 onClick={handleAddTodo}
-                                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"
+                                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/85"
                             >
                                 Add Todo
                             </button>
