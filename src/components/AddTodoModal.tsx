@@ -71,10 +71,11 @@ export function AddTodoModal() {
                                 Cancel
                             </button>
                             <button
+                            type="submit"
                                 onClick={handleAddTodo}
                                 className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/85"
                             >
-                                Add Todo
+                                Add Note
                             </button>
                         </div>
                     </div>
