@@ -51,13 +51,13 @@ export function AddTodoModal() {
                         </button>
 
                         <h2 className="text-lg text-center font-semibold dark:text-white ">
-                            New Note
+                            New Todo
                         </h2>
 
                         <div className="my-10">
                             <input
                                 type="text"
-                                placeholder="Enter your note"
+                                placeholder="Enter your todo"
                                 value={todo}
                                 onChange={(e) => setTodo(e.target.value)}
                                 className="w-full px-4 py-2.5 rounded-lg focus:outline-none dark:bg-black dark:text-white border border-black dark:border-white"
@@ -75,7 +75,7 @@ export function AddTodoModal() {
                                 onClick={handleAddTodo}
                                 className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/85"
                             >
-                                Add Note
+                                Add Todo
                             </button>
                         </div>
                     </div>
